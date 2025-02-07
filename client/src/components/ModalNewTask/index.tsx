@@ -20,7 +20,7 @@ const ModalNewTask = ({ isOpen, onClose, id = null }: Props) => {
   const [dueDate, setDueDate] = useState("");
   const [authorUserId, setAuthorUserId] = useState("");
   const [assignedUserId, setAssignedUserId] = useState("");
-  const [projectId, setProjectId] = useState("");
+  const [projectId, setProjectId] = useState(id?.toString() || "");
 
   const handleSubmit = async () => {
     if (!title || !authorUserId || !(id !== null || projectId)) return;
@@ -47,7 +47,7 @@ const ModalNewTask = ({ isOpen, onClose, id = null }: Props) => {
   };
 
   const isFormValid = () => {
-    return title && authorUserId && !(id !== null || projectId);
+    return title && authorUserId && (id !== null || projectId);
   };
 
   const selectStyles =
