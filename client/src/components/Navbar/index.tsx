@@ -32,7 +32,7 @@ const Navbar = () => {
             </div>
             <div className="flex items-center space-x-3">
                 <Link
-                    href="/settings"
+                    href="/"
                     className= "h-min w-min rounded p-2 hover:bg-gray-100"
                 >
                     <Settings className="h-6 w-6 cursor-pointer dark:text-white" />
