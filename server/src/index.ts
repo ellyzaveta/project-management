@@ -4,7 +4,7 @@ import bodyParser from "body-parser";
 import cors from "cors";
 import helmet from "helmet";
 import morgan from "morgan";
-import projectRoutes from "./routes/ProjectRoutes"
+import projectRoutes from "./routes/projectRoutes"
 import taskRoutes from "./routes/taskRoutes"
 import searchRoutes from "./routes/searchRoutes"
 import userRoutes from "./routes/userRoutes"

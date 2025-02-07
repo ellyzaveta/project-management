@@ -3,11 +3,19 @@
 import { useAppDispatch, useAppSelector } from '@/app/redux';
 import { setIsSidebarCollapsed } from '@/state';
 import { useGetProjectsQuery } from '@/state/api';
-import { Briefcase, ChevronDown, ChevronUp, LockIcon, LucideIcon, Settings, X } from 'lucide-react';
+import { Briefcase, ChartGantt, ChevronDown, ChevronLeft, ChevronUp, LockIcon, LucideIcon } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import React, {useState} from 'react'
+import { Aclonica } from 'next/font/google';
+
+const aclonica = Aclonica({
+    subsets: ['latin'],
+    weight: '400',
+    display: 'swap',
+});
+
 
 const Sidebar = () => {
 
@@ -21,6 +29,10 @@ const Sidebar = () => {
         (state) => state.global.isSidebarCollapsed, 
     );
 
+    const isDarkMode = useAppSelector(
+        (state) => state.global.isDarkMode,
+    );
+
     const sidebarClassNames = `fixed flex flex-col h-[100%] justify-between shadow-xl transition-all duration-300 h-full z-40 dark:bg-black overflow-y-auto bg-white 
         ${isSidebarCollapsed ? "w-0 hidden" : "w-64"}
     `;
@@ -28,23 +40,28 @@ const Sidebar = () => {
     return (
         <div className={sidebarClassNames}>
             <div className='flex h-[100%] w-full flex-col justify-start'>
-                <div className='z-50 flex min-h-[56px] w-64 items-center justify-between bg-white px-6 pt-3 dark:bg-black'>
-                    <div className='text-xl font-bold text-gray-800 dark:text-white'>
-                        LOGO
+                <div className="z-50 flex min-h-[56px] w-64 items-center justify-between bg-white px-6 py-4 dark:bg-black">
+                    <div className={`text-2xl font-bold text-gray-800 dark:text-white ${aclonica.className}`}>
+                        TASKLY
                     </div>
                     {isSidebarCollapsed ? null : (
-                        <button className='py-3' onClick={() => {
-                            dispatch(setIsSidebarCollapsed(!isSidebarCollapsed));
-                        }}>
-                            <X className='h-6 w-6 text-gray-800 hover:text-gray-500 dark:text-white'/>
-                        </button>
-                    )}
+                        <button
+                        onClick={() => dispatch(setIsSidebarCollapsed(!isSidebarCollapsed))}
+                        className={
+                            isDarkMode
+                            ? `rounded p-2 dark:hover:bg-gray-700`
+                            : `rounded p-2 hover:bg-gray-100`
+                        }
+                        >
+                        <ChevronLeft className='h-6 w-6 cursor-pointer dark:text-white' strokeWidth={2.5}></ChevronLeft>
+                    </button>
+                )}
                 </div>
                 <div className='flex items-center gap-5 border-y-[1.5px] border-gray-200 px-8 py-4 dark:border-gray-700'>
                     <Image src="/logo.png" alt="Logo" width={40} height={40} />
                     <div>
                         <h3 className='text-md font-bold tracking-wide dark:text-gray-200'>
-                            YOUR TEAM
+                            MY TEAM
                         </h3>
                         <div className='mt-1 flex items-start gap-2'>
                             <LockIcon className='mt-[0.1rem] h-3 w-3 text-gray-500 dark:text-gray-400'/>
@@ -53,8 +70,7 @@ const Sidebar = () => {
                     </div>
                 </div>
                 <nav className='z-10 w-full'>
-                    <SidebarLink icon={Briefcase} label='Timeline' href="/timeline"/>
-                    <SidebarLink icon={Settings} label='Settings' href="/settings"/>
+                    <SidebarLink icon={ChartGantt} label='Timeline' href="/"/>
                 </nav>
 
                 <button onClick={() => setShowProjects((prev) => !prev)}
