@@ -2,7 +2,7 @@ import React from 'react'
 
 type Props = {
     name: string;
-    buttonComponent?: any;
+    buttonComponent?: React.ReactNode;
     isSmallText?: boolean;
 }
 
@@ -21,4 +21,4 @@ const Header = ({
   )
 }
 
-export default Header
+export default Header;

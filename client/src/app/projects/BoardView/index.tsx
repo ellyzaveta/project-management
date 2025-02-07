@@ -5,6 +5,7 @@ import { HTML5Backend } from "react-dnd-html5-backend";
 import {Task as TaskType} from "@/state/api"
 import { EllipsisVertical, MessageSquareMore, Plus } from 'lucide-react';
 import { format } from "date-fns";
+import { DropTargetMonitor, DragSourceMonitor } from "react-dnd";
 import Image from "next/image";
 
 type BoardProps = {
@@ -62,7 +63,7 @@ type BoardProps = {
     const [{ isOver }, drop] = useDrop(() => ({
       accept: "task",
       drop: (item: { id: number }) => moveTask(item.id, status),
-      collect: (monitor: any) => ({
+      collect: (monitor: DropTargetMonitor) => ({
         isOver: !!monitor.isOver(),
       }),
     }));
@@ -129,7 +130,7 @@ type BoardProps = {
     const [{ isDragging }, drag] = useDrag(() => ({
       type: "task",
       item: { id: task.id },
-      collect: (monitor: any) => ({
+      collect: (monitor: DragSourceMonitor) => ({
         isDragging: !!monitor.isDragging(),
       }),
     }));
