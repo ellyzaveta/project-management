@@ -255,6 +255,6 @@ type BoardProps = {
         </div>
       </div>
     );
-  };
+};
   
-  export default BoardView;
+export default BoardView;

@@ -39,7 +39,7 @@ const ListView = ({ id, setIsModalNewTaskOpen }: Props) => {
         </div>
       </div>
     );
-  };
+};
   
 export default ListView;
 
