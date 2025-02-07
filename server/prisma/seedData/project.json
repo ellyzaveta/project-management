@@ -8,7 +8,7 @@
   },
   {
     "id": 2,
-    "name": "Beacon",
+    "name": "DevFlow",
     "description": "Developing advanced navigation systems.",
     "startDate": "2023-02-01T00:00:00Z",
     "endDate": "2023-10-15T00:00:00Z"
@@ -50,21 +50,21 @@
   },
   {
     "id": 8,
-    "name": "Hotel",
+    "name": "StayFlow",
     "description": "Hotel management system overhaul.",
     "startDate": "2023-03-01T00:00:00Z",
     "endDate": "2024-01-01T00:00:00Z"
   },
   {
     "id": 9,
-    "name": "India",
+    "name": "Pulse",
     "description": "Telecommunication infrastructure upgrade.",
     "startDate": "2023-06-01T00:00:00Z",
     "endDate": "2023-12-01T00:00:00Z"
   },
   {
     "id": 10,
-    "name": "Juliet",
+    "name": "CyberX",
     "description": "Initiative to enhance cyber-security measures.",
     "startDate": "2023-07-01T00:00:00Z",
     "endDate": "2024-02-01T00:00:00Z"
